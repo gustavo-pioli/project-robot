@@ -1,0 +1,18 @@
+.footer {
+  padding: 1rem 18.75rem;
+  background: #150239;
+  color: white;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.footerContainer {
+  max-width: 50rem;
+  padding: 0 auto;
+  margin: auto;
+}
