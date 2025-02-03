@@ -1,9 +1,12 @@
+import ofertasGet from '@/actions/ofertas-get';
 import OfertasCarrossel from '@/components/ofertas/ofertasCarrossel';
 
-export default function Home() {
+export default async function Home() {
+  const data = await ofertasGet();
+
   return (
     <main className="mainContainer">
-      <OfertasCarrossel />
+      <OfertasCarrossel specialItems={data} />
     </main>
   );
 }
