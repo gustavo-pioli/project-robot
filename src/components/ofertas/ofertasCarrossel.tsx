@@ -1,7 +1,6 @@
 'use client'
 
 import styles from './ofertasCarrossel.module.css';
-import { SpecialItem } from '@/actions/ofertas-get';
 import React from 'react';
 import Slider from 'react-slick';
 import OfertasItem from './ofertasItem';
@@ -9,9 +8,10 @@ import OfertasItem from './ofertasItem';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image';
+import { Game } from '@/actions/gameInfo-get';
 
 
-export default function OfertasCarrossel({ specialItems }: { specialItems: SpecialItem[] }) {
+export default function OfertasCarrossel({ items }: { items: Game[] }) {
   const [sliderRef, setSliderRef] = React.useState(null);
 
   const sliderSettings = {
@@ -21,31 +21,39 @@ export default function OfertasCarrossel({ specialItems }: { specialItems: Speci
     infinite: false,
   }
 
+  function SampleNextArrow({ className, style, onClick }: { className: string }) {
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "green" }}
+        onClick={onClick}
+      />
+    );
+  }
 
   return (
     <div className="container">
       <h1 className={styles.title}>OFERTAS</h1>
       <Slider {...sliderSettings}>
-        {specialItems.map((item, index) => (
-          <div key={index} className={styles.carrosselConteudo}>
-            <Image
-              src={item.large_capsule_image}
-              alt="Banner"
-              width={616}
-              height={353}
-            />
-            <div className={styles.descricao}>
-              <Image
-                src={item.small_capsule_image}
-                alt="Banner"
-                width={184}
-                height={69}
-              />
-              <p>Muito texto</p>
-            </div>
+        {items.map((item, index) => (
+          <div key={index}>
+            <OfertasItem content={item} index={index} />
           </div>
-          // <OfertasItem specialItem={item} index={index} />
         ))}
+        <div>
+          <h1>Veja Mais.</h1>
+        </div>
       </Slider>
     </div>
   );

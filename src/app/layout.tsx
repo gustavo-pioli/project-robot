@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { type_logo } from '@/functions/fonts';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
@@ -15,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className={type_logo.variable}>
         <Header />
         {children}
         <Footer />

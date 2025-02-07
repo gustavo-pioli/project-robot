@@ -1,8 +1,14 @@
+'use client'
 import Link from 'next/link';
 import styles from './header.module.css';
+import { usePathname } from 'next/navigation';
 // import Image from 'next/image';
 
-export default async function Header() {
+export default function Header() {
+  const pathname = usePathname();
+
+  console.log(pathname);
+
   return (
     <header className={styles.header}>
       <nav className={`container ${styles.nav}`}>
@@ -10,6 +16,7 @@ export default async function Header() {
           ROBOT
         </Link>
         <div className={styles.headerMenu}>
+          <Link href={'/'} className={pathname === '/' ? 'active' : ''}>HOME</Link>
           <Link href={'/'}>LOJA</Link>
           <Link href={'/'}>SOBRE</Link>
           <Link href={'/'}>SUPORTE</Link>

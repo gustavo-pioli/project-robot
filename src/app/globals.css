@@ -3,13 +3,14 @@
 }
 
 body {
-  padding-top: 4rem; /* 8rem no mainContainer caso remova */
+  padding-top: 4rem;
+  /* 8rem no mainContainer caso remova */
   margin: 0px;
   --type-first: Helvetica, Arial, sans-serif;
-  --type-second: 'Spectral', Georgia;
+  --type-logo: var(--type-logo);
   font-family: var(--type-first);
   font-size: 1.5rem;
-  background: linear-gradient(to left,#362E45 10% ,#4C3870 50%, #362E45 90%);
+  background: linear-gradient(to left, #362E45 10%, #4C3870 50%, #362E45 90%);
 }
 
 h1,
@@ -42,25 +43,12 @@ a {
 }
 
 .title {
-  font-family: var(--type-second);
+  font-family: var(--type-logo);
   line-height: 1;
   font-size: 3rem;
   margin: 1rem 0;
   position: relative;
   z-index: 1;
-}
-
-.title::after {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: #fb1;
-  position: absolute;
-  bottom: 5px;
-  left: -5px;
-  border-radius: 0.2rem;
-  z-index: -1;
 }
 
 .animeLeft {

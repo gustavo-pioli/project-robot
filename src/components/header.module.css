@@ -17,11 +17,34 @@
 
 .headerMenu {
   display: flex;
-  gap: 20px;
+  gap: 2rem;
 }
+
+.headerMenu :global(a.active) {
+  color: #742AFC;
+}
+
+.headerMenu a::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #FFF;
+  align-items: center;
+  position: relative;
+  left: -1rem;
+  top: -4px;
+  border-radius: 16px;
+}
+
+.headerMenu a:first-child::before {
+  content: none;
+}
+
 .logo {
   display: flex;
   align-items: center;
+  font-family: var(--type_logo);
   font-size: 2rem;
   gap: 1rem;
 }
@@ -34,11 +57,16 @@
   background: url('/assets/robot.svg') no-repeat center center;
   margin-left: 0.5rem;
   position: relative;
-  top: -1rem;
+  top: -0.75rem;
 }
 
 .login {
-/* position: relative;
-left: 12rem; */
-align-self: right;
+  align-self: right;
+}
+
+.login a {
+  color: #742AFC;
+  border: 2px solid #742AFC;
+  padding: 8px;
+  border-radius: 10px;
 }

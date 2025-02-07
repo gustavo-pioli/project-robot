@@ -1,12 +1,13 @@
-import ofertasGet from '@/actions/ofertas-get';
+import GamesGet from '@/actions/gameInfo-get';
+import OfertasGet from '@/actions/ofertas-get';
 import OfertasCarrossel from '@/components/ofertas/ofertasCarrossel';
 
 export default async function Home() {
-  const data = await ofertasGet();
-
+  const appids = await OfertasGet();
+  const data = await GamesGet(appids);
   return (
     <main className="mainContainer">
-      <OfertasCarrossel specialItems={data} />
+      <OfertasCarrossel items={data} />
     </main>
   );
 }
