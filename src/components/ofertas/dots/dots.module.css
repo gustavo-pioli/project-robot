@@ -1,0 +1,73 @@
+.dotsContainer {
+  position: relative;
+  /* background-color: aqua; */
+  height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.dotsHolder {
+  position: absolute;
+  /* background-color: black; */
+  height: 3px;
+  width: 100%;
+  top: -1.5rem;
+}
+
+.list {
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.list li{
+  /* position: fixed; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  justify-content: space-between;
+}
+
+.list button {
+  padding: 0 1rem;
+  margin: 0 1rem;
+  border-radius: 50px;
+  background-color: #362E45;
+  box-shadow: none;
+  border: none;
+  color: transparent;
+  font-size: 0.5rem;
+  border: 1px solid #362E45;
+}
+
+.list button:hover {
+  border-color:#742AFC;
+  cursor: pointer;
+}
+
+.dotsContainer :global(.slick-active) button{
+  background-color: #742AFC !important;
+}
+
+.dotButton {
+  padding: 0 1rem;
+  margin: 0 1rem;
+  border-radius: 50px;
+  background-color: #362E45;
+  box-shadow: none;
+  border: none;
+  color: transparent;
+}
+
+.dotButton:hover {
+  border: 1px solid #742AFC;
+}
+
+.dotButton button {
+  padding: 0 1rem;
+  background-color: transparent;
+  color: transparent;
+  border-radius: 50px;
+  box-shadow: none;
+  border: none;
+}

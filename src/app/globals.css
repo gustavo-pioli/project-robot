@@ -3,14 +3,25 @@
 }
 
 body {
-  padding-top: 4rem;
+  padding-top: 8rem;
   /* 8rem no mainContainer caso remova */
   margin: 0px;
   --type-first: Helvetica, Arial, sans-serif;
   --type-logo: var(--type-logo);
+  --carouselHeight: 438px;
   font-family: var(--type-first);
   font-size: 1.5rem;
   background: linear-gradient(to left, #362E45 10%, #4C3870 50%, #362E45 90%);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 8rem);
+}
+
+.AppBody {
+  flex: 1;
 }
 
 h1,
@@ -33,8 +44,7 @@ a {
 }
 
 .container {
-  max-width: 50rem;
-  padding: 0 1rem;
+  max-width: 74rem;
   margin: 0 auto;
 }
 
