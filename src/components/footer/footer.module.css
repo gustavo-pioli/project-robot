@@ -1,5 +1,7 @@
 .footer {
-  padding: 1rem 18.75rem;
+  /* position: absolute; */
+  width: 100%;
+  padding: 1rem 0;
   background: #150239;
   color: white;
 }
@@ -9,6 +11,16 @@
   justify-content: space-around;
   align-items: center;
   font-size: 1rem;
+}
+
+.footerContent h1 {
+  font-family: var(--type_logo);
+  font-weight: 100;
+}
+
+.footerContent img {
+  width: 3rem;
+  height: 3rem;
 }
 
 .footerContainer {

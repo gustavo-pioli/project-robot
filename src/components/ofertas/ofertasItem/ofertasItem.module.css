@@ -1,0 +1,82 @@
+.carrosselConteudo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  height: auto;
+  max-width: 100%;
+}
+
+.visualHolder {
+  width: 100%;
+  aspect-ratio: 16/9; 
+  position: relative;
+  overflow: hidden;
+}
+
+.visualHolder img {
+  object-fit: cover;
+}
+
+.visualHolder video {
+  max-width: 100%;
+  height: auto;
+}
+
+.descricao {
+  position: relative;
+  font-size: 0.875rem;
+  background: #150239;
+  display: flex;
+  flex-direction: column;
+  max-height: 459px;
+}
+
+.descricao img {
+  position: relative;
+  margin: 1rem 0;
+  padding: 0;
+  left: -1rem;
+  box-shadow: -4px 4px 4px rgba(0,0,0,0.25);
+}
+
+.descricao > p {
+  margin: 0.625rem 1rem 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: normal;
+  max-height: 10ch;
+  width: 23rem;
+  flex-grow: 1;
+}
+
+.tagContainer {
+  margin: 0 1rem;
+}
+
+/* Temporário */
+.bundleText {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.precoContainer {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  /* margin: 0.5rem 1rem; */
+  background-color: #4C3870; 
+  border-radius: 50px;
+  width: 75%;
+}
+
+
+.carrosselConteudo > video {
+  max-width: 100%;
+  height: auto;
+}
+
+.placeHolder {
+  max-height: 441px;
+}

@@ -1,0 +1,26 @@
+.tagList{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  max-width: 23.25rem;
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.tagList li{
+  background-color: #4C3870;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  color: #FFFF;
+  text-wrap: nowrap;
+}
+
+.tagList::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 90%, #150239);
+}
