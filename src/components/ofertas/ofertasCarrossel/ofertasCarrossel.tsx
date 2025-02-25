@@ -25,11 +25,6 @@ export default function OfertasCarrossel({ items }: { items: Game[] }) {
     appendDots: (dots: React.ReactNode) => <Dots dots={dots} />,
     beforeChange: (current: number, next: number) => setActiveIndex(next),
   };
-  console.log(
-    `${items.map((item, index) => {
-      return `${index}: ${JSON.stringify(item.name)}`;
-    })}`,
-  );
   return (
     <div className="container">
       <h1 className={styles.title}>OFERTAS</h1>

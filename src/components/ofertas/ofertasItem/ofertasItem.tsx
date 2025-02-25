@@ -14,7 +14,6 @@ export default function OfertasItem({
   index: number;
   isActive: boolean;
 }) {
-  // console.log(`${index}: Video ${content.movies[0].webm[480]}`);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
