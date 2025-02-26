@@ -1,3 +1,28 @@
+.skeleton {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  height: var(--carouselHeight);
+  background-image: linear-gradient(90deg, #150239 0px, #2A056B 50%, #150239 100%);
+  background-color: #150239;
+  background-size: 200%;
+  animation: skeleton 1.5s infinite linear;
+}
+
+@keyframes skeleton {
+  from{
+    background-position: 0px;
+  }
+  to {
+    background-position: -200%;
+  }
+}
+
+.carousel {
+  height: 469px;
+  position: relative;
+}
 .sliderContainer {
   position: relative;
   margin-bottom: 2rem;
@@ -13,7 +38,6 @@
 .dots {
   background-color: #ddd;
   padding: 1rem;
-      
 }
 
 .dots li {
@@ -38,7 +62,6 @@
 }
 
 .vejaMais {
-  z-index: 10;
   width: 100%;
   height: 100%;
   background-color: rgba(21,2,57,0.8);

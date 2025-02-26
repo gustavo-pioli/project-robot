@@ -17,7 +17,7 @@ export default function Header() {
           <Link href={'/'} className={pathname === '/' ? 'active' : ''}>
             HOME
           </Link>
-          <Link href={'/'} className={pathname === '/loja' ? 'active' : ''}>
+          <Link href={'/loja'} className={pathname === '/loja' ? 'active' : ''}>
             LOJA
           </Link>
           <Link href={'/'} className={pathname === '/sobre' ? 'active' : ''}>

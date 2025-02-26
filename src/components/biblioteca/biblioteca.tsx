@@ -1,7 +1,13 @@
-import { BibliotecaItem } from '@/api/biblioteca-get';
-import PrecoGet, { PrecoResponse } from '@/api/preco-get';
+/* eslint-disable react-hooks/exhaustive-deps */
+'use client';
+
 import Card from './card/card';
 import styles from './biblioteca.module.css';
+import React from 'react';
+import useFetch from '@/hooks/useFetch';
+import { BibliotecaItem, PrecoResponse } from '@/services/types';
+import { ParseIdFromURL } from '@/utils/parseId';
+import LoadingError from '../Error/loadingError';
 
 function buildCardRows(data: PrecoResponse) {
   const sizes = [2, 3, 4];
@@ -37,25 +43,57 @@ function showCardRows(cardRows: PrecoResponse[]) {
             appId={appId}
             preco={group[appId].data.price_overview}
           />
+          // <p key={appId}>Card</p>
         ))}
       </div>
     );
   });
 }
 
-export default async function Biblioteca({
-  items,
-}: {
-  items: BibliotecaItem[];
-}) {
-  const data = await PrecoGet(items);
-  const cardRows = buildCardRows(data);
+export default function Biblioteca() {
+  const { loading, error, request } = useFetch();
+  const [cards, setCards] = React.useState<BibliotecaItem[] | null>(null);
+  const [cardRows, setCardRows] = React.useState<PrecoResponse[] | null>(null);
+
+  React.useEffect(() => {
+    async function fetchCards() {
+      const url = '/api/biblioteca';
+      const response = await request(url);
+      const json = response?.data;
+      const info = json ? (json.items as BibliotecaItem[]) : [];
+      setCards(info);
+    }
+    fetchCards();
+  }, []);
+
+  React.useEffect(() => {
+    async function fetchCardsPreco(cards: BibliotecaItem[], numItems = 9) {
+      let appIds = cards.map((item) => {
+        const appId = ParseIdFromURL(item.logo);
+        return appId;
+      });
+      appIds = appIds.slice(0, numItems);
+      const url = `/api/preco/${appIds.join(',')}`;
+      const response = await request(url);
+      const json = response?.data as PrecoResponse;
+      setCardRows(buildCardRows(json));
+    }
+    if (cards) fetchCardsPreco(cards);
+  }, [cards]);
 
   return (
     <section className={styles.bibContainer}>
       <h1>Mais Jogados</h1>
-      <div className={styles.cardsHolder}>{showCardRows(cardRows)}</div>
-      <button className={styles.exibirMais}>Exibir Mais</button>
+      {(loading || !cardRows) && !error ? (
+        <div className={styles.skeleton}> </div>
+      ) : cardRows ? (
+        <>
+          <div className={styles.cardsHolder}>{showCardRows(cardRows)}</div>
+          <button className={styles.exibirMais}>Exibir Mais</button>
+        </>
+      ) : (
+        <LoadingError />
+      )}
     </section>
   );
 }

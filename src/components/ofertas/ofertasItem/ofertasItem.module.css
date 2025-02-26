@@ -6,6 +6,7 @@
 }
 
 .visualHolder {
+  display: grid;
   width: 100%;
   aspect-ratio: 16/9; 
   position: relative;
@@ -13,12 +14,19 @@
 }
 
 .visualHolder img {
+  display: block;
   object-fit: cover;
+  opacity: 0;
+  transition: 0.2s;
+  grid-area: 1/1;
 }
 
 .visualHolder video {
   max-width: 100%;
   height: auto;
+  opacity: 0;
+  transition: 0.2s;
+  grid-area: 1/1;
 }
 
 .descricao {
@@ -53,12 +61,6 @@
 
 .tagContainer {
   margin: 0 1rem;
-}
-
-/* Temporário */
-.bundleText {
-  text-align: center;
-  font-size: 1.5rem;
 }
 
 .precoContainer {

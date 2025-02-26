@@ -1,19 +1,42 @@
 .cardContainer {
   width: 100%;
   height: auto;
-  
+  border-radius: 8px 8px 0 0;
 }
 
 .imageHolder {
+  display: grid;
   width: 100%;
+  height: auto;
   aspect-ratio: 16/9;
   position: relative;
 }
 
-.imageHolder img {
+.imageHolder > img {
   object-fit: cover;
+  grid-area: 1/1;
+  transition: 0.2s;
+  opacity: 0;
 }
 
+.skeleton {
+  grid-area: 1/1;
+  border-radius: 8px 8px 0 0;
+  object-fit: cover;
+  background-image: linear-gradient(90deg, #150239 0px, #2A056B 50%, #150239 100%);
+  background-color: #150239;
+  background-size: 200%;
+  animation: skeleton 1.5s infinite linear;
+}
+
+@keyframes skeleton {
+  from{
+    background-position: 0px;
+  }
+  to {
+    background-position: -200%;
+  }
+}
 
 .cardContainer img {
   border-radius: 8px 8px 0 0;

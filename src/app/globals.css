@@ -24,6 +24,10 @@ body {
   flex: 1;
 }
 
+.App :global(slick-cloned) {
+  display: hidden;
+}
+
 h1,
 h2,
 h3,
