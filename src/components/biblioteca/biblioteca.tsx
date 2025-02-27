@@ -43,7 +43,6 @@ function showCardRows(cardRows: PrecoResponse[]) {
             appId={appId}
             preco={group[appId].data.price_overview}
           />
-          // <p key={appId}>Card</p>
         ))}
       </div>
     );

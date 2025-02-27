@@ -13,7 +13,6 @@ export default function Card({
   preco: PriceOverview;
 }) {
   const { request } = useFetch();
-  // const [imgSrc, setImgSrc] = React.useState<string | null>(null);
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [skeleton, setSkeleton] = React.useState(true);
 
@@ -44,8 +43,6 @@ export default function Card({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 616px"
             onLoad={handleLoad}
-            // width={616}
-            // height={353}
             priority
           />
         ) : (

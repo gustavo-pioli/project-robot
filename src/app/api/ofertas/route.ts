@@ -5,7 +5,6 @@ export async function GET() {
   const api = apiBaseUrl;
   try {
     const response = await api.get('api/featuredcategories/?l=brazilian');
-    // const response = await api.get('invalid');
     const data = response.data;
     return NextResponse.json(data);
   } catch (error) {
