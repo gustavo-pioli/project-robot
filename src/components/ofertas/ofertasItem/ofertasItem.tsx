@@ -1,20 +1,34 @@
 import Image from 'next/image';
 import styles from './ofertasItem.module.css';
-import { Game } from '@/api/gameInfo-get';
 import Preco from '../preco/preco';
 import Tags from '../tags/tags';
 import React from 'react';
+import { Game } from '@/services/types';
 
 export default function OfertasItem({
   content,
   index,
   isActive,
+  onLoad,
 }: {
   content: Game;
   index: number;
   isActive: boolean;
+  onLoad: () => void;
 }) {
+  const [skeleton, setSkeleton] = React.useState(true);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  function handleLoad(img: HTMLImageElement) {
+    setSkeleton(false);
+    img.style.opacity = '1';
+  }
+
+  function handleVideoLoad(event: React.SyntheticEvent<HTMLVideoElement>) {
+    setSkeleton(false);
+    onLoad();
+    event.currentTarget.style.opacity = '1';
+  }
 
   React.useEffect(() => {
     if (videoRef.current) {
@@ -25,6 +39,7 @@ export default function OfertasItem({
   return (
     <div key={index} className={styles.carrosselConteudo}>
       <div className={styles.visualHolder}>
+        {skeleton && <div className={styles.skeleton}> </div>}
         {content?.movies?.length ? (
           <video
             ref={videoRef}
@@ -33,6 +48,7 @@ export default function OfertasItem({
             controls
             autoPlay
             muted
+            onLoadedData={handleVideoLoad}
           >
             <source src={content.movies[0].webm[480]} type="video/mp4" />
           </video>
@@ -42,6 +58,8 @@ export default function OfertasItem({
             src={content.screenshots[0].path_full}
             alt="Banner"
             fill
+            onLoadingComplete={handleLoad}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 616px"
             // width={616}
             // height={441}
           />
@@ -52,6 +70,7 @@ export default function OfertasItem({
           className={styles.banner}
           src={content.header_image}
           alt="Banner"
+          style={{ width: 'auto', height: 'auto' }} // TODO
           width={460}
           height={215}
         />

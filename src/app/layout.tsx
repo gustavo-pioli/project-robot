@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { type_logo } from '@/functions/fonts';
+import { type_logo } from '@/utils/fonts';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 

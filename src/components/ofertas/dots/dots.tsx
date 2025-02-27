@@ -6,8 +6,6 @@ interface DotsProps {
 }
 
 export default function Dots({ dots }: DotsProps) {
-  // React.useEffect();
-
   return (
     <div className={styles.dotsContainer}>
       <ul id="dots" className={styles.list}>
