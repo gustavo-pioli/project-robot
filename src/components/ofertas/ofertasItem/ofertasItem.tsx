@@ -25,7 +25,6 @@ export default function OfertasItem({
   }
 
   function handleVideoLoad(event: React.SyntheticEvent<HTMLVideoElement>) {
-    console.warn('Chamou');
     setSkeleton(false);
     onLoad();
     event.currentTarget.style.opacity = '1';

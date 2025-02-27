@@ -22,7 +22,6 @@ export default function useFetch() {
       }
     } catch (err) {
       json = null;
-      // console.log(`${url} caiu em Erro`);
       setError(
         err instanceof axios.AxiosError
           ? err.response?.data?.message

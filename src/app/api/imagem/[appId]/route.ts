@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   request: Request,
-  { params }: { params: { appId: string } },
+  { params }: { params: Promise<{ appId: string }> },
 ) {
   const { appId } = await params;
 
@@ -21,7 +21,7 @@ export async function GET(
     return NextResponse.json({ imageUrl: imageUrl });
   } catch (error) {
     console.warn(`Imagem não encontrada para appId ${appId}, usando fallback.`);
-    if (axios.isAxiosError(error)) console.log(error.response?.data?.message);
+    if (axios.isAxiosError(error)) console.log(error.message);
     return NextResponse.json({ imageUrl: fallbackImg });
   }
 }

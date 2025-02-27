@@ -67,7 +67,7 @@ export default function OfertasCarrossel() {
     appendDots: (dots: React.ReactNode) => <Dots dots={dots} />,
     beforeChange: (current: number, next: number) => setActiveIndex(next),
   };
-  console.log(`Loading Carrossel: ${videoLoaded}`);
+
   return (
     <div className="container">
       <h1 className={styles.title}>OFERTAS</h1>
