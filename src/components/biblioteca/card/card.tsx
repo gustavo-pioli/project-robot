@@ -8,9 +8,11 @@ import useFetch from '@/hooks/useFetch';
 export default function Card({
   appId,
   preco,
+  mobile,
 }: {
   appId: string;
   preco: PriceOverview;
+  mobile: boolean;
 }) {
   const { request } = useFetch();
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
@@ -24,7 +26,7 @@ export default function Card({
   React.useEffect(() => {
     async function checkImage() {
       const url = `api/imagem/${appId}`;
-      const response = await request(url);
+      const { response } = await request(url);
       const json = response?.data;
       if (json) setImageUrl(json.imageUrl);
     }
@@ -33,7 +35,7 @@ export default function Card({
   }, []);
 
   return (
-    <div className={styles.cardContainer}>
+    <div className={`${styles.cardContainer}`}>
       <div className={styles.imageHolder}>
         {skeleton && <div className={styles.skeleton}> </div>}
         {imageUrl ? (
@@ -55,9 +57,10 @@ export default function Card({
             discount={preco.discount_percent}
             initial={preco.initial_formatted}
             final={preco.final_formatted}
+            mobile={mobile}
           />
         ) : (
-          <Preco />
+          <Preco mobile={mobile} />
         )}
       </div>
     </div>

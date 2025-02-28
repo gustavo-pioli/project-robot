@@ -86,3 +86,9 @@
   color: #8A4FFF;
   cursor: pointer;
 }
+
+@media(max-width: 416px) {
+  /* .title {
+    margin-top: 0px;
+  } */
+}

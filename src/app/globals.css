@@ -77,3 +77,12 @@ a {
     transform: initial;
   }
 }
+
+@media (max-width: 416px) {
+  body {
+    padding-top: 4rem;
+  }
+  .container{
+    max-width: 95%;
+  };
+}

@@ -4,6 +4,7 @@
   z-index: 100;
   background: #150239;
   top: 0px;
+  height: 8rem;
 }
 
 .nav {
@@ -11,7 +12,7 @@
   justify-content: space-around;
   align-items: center;
   height: 8rem;
-  max-width: 100%;
+  width: 100%;
 }
 
 .headerMenu {
@@ -46,17 +47,12 @@
   font-family: var(--type_logo);
   font-size: 2rem;
   gap: 1rem;
-}
-
-.logo::before {
-  content: '';
-  display: inline-block;
-  width: 74px;
-  height: 74px;
-  background: url('/assets/robot.svg') no-repeat center center;
-  margin-left: 0.5rem;
   position: relative;
-  top: -0.75rem;
+}
+.logo > svg {
+  position: absolute;
+  bottom: -6px;
+  left: -5rem;
 }
 
 .login {
@@ -68,4 +64,116 @@
   border: 2px solid #742AFC;
   padding: 8px;
   border-radius: 10px;
+}
+
+.mobileButton {
+  background: #4C3870;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+  position: relative;
+  left: 2rem;
+}
+
+.mobileButton::after {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0px 6px currentColor, 0 -6px currentColor;
+  transition: .2s;
+}
+
+.mobileButton:focus,
+.mobileButton:hover,
+.mobileButtonActive {
+  outline: none;
+  background: #362E45 ;
+  box-shadow: 0 0 0 3px #5400F0;
+  border-color: #742AFC;
+  color: #742AFC;
+}
+
+.mobileButtonActive::after {
+  transform: rotate(90deg);
+  width: 4px;
+  height: 4px;
+  box-shadow: 0px 8px currentColor, 0 -8px currentColor;
+}
+
+.mobileMenu {
+  display: block;
+  position: absolute;
+  top: 4rem;
+  right: 0px;
+  padding: 0 1rem;
+  background: #362E45 ;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-radius: .2rem;
+  transform: translateX(-10px);
+  border: 1px solid #742AFC;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobileMenuActive {
+  transition: 0.3s;
+  transform: initial;
+  opacity: 1;
+  z-index: 100;
+  pointer-events: initial;
+}
+.mobileMenu :global(a.active) {
+  color: #742AFC;
+}
+.mobileMenu a {
+  display: flex;
+  align-items: center;
+  background: none;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  margin: 0 0 6px;
+}
+.mobileMenu a:last-child {
+  border-bottom: 0px;
+}
+
+.mobileMenu a::hover {
+  color: #742AFC;
+}
+
+@media(max-width: 416px){
+  .nav{
+    position: absolute;
+    height: 4rem;
+  }
+  .header{
+    height: 4rem;
+  }
+  .headerMenu > a{
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .logo > svg{
+    transform: scale(0.5);
+    bottom: -17px;
+    left: -3.75rem;
+  }
 }

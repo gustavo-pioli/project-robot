@@ -19,7 +19,10 @@ export async function GET(
       `/api/appdetails?appids=${appId}&l=brazilian`,
     );
     const data = response.data;
-
+    const contentType = response.headers['content-type'];
+    if (contentType.includes('text/html')) {
+      throw new Error('Erro: O servidor retornou HTML, mas esperávamos JSON.');
+    }
     return NextResponse.json(data);
   } catch (error) {
     let msg = 'Erro ao buscar detalhes do jogo';
