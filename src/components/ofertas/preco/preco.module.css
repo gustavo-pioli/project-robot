@@ -6,12 +6,46 @@
   align-items: center;
   padding-right: 1rem;
 }
+.mobileContainer {
+  border-radius: 50px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  overflow: hidden;
+}
+
+.mobileContainer .preco{
+  font-size: 1rem;
+}
+
+.mobileContainer .desconto {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.mobileContainer .precoDesc > p {
+  font-size: 1rem !important;
+}
+
+.mobileContainer .precoDesc {
+  margin: 0 1rem;
+}
+
 
 .desconto {
   padding: 0.75rem;
   background-color: #5400F0;
   border-radius: 50px;
   font-size: 1.5rem;
+}
+
+.mobileDesc {
+  display: none;
+  flex-direction: column;
+  margin: 0 2rem;
+  align-items: center;
 }
 
 .precoDesc {
@@ -32,5 +66,5 @@
   color: white;
   font-size: 1.5rem;
   text-align: end;
+  max-width: 100%;
 }
-

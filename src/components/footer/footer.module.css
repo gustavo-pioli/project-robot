@@ -1,5 +1,4 @@
 .footer {
-  /* position: absolute; */
   width: 100%;
   padding: 1rem 0;
   background: #150239;
@@ -10,6 +9,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   font-size: 1rem;
 }
 
@@ -27,4 +27,25 @@
   max-width: 50rem;
   padding: 0 auto;
   margin: auto;
+}
+
+.mobileAbsolute {
+  transform: scale(0.75);
+  display: flex;
+  position: relative;
+  gap: 8rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media(max-width: 416px) {
+  .footerContainer{
+    max-width: 90%;
+  }
+  .footerContent > p{
+    font-size: 0.9rem;
+  }
+  .footerContent > h1{
+    font-size: 1rem;
+  }
 }
