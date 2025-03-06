@@ -8,6 +8,7 @@ import useFetch from '@/hooks/useFetch';
 import { BibliotecaItem, PrecoResponse } from '@/services/types';
 import { ParseIdFromURL } from '@/utils/parseId';
 import LoadingError from '../Error/loadingError';
+import { useTranslation } from 'react-i18next';
 
 function buildCardRows(
   data: PrecoResponse,
@@ -54,6 +55,7 @@ function showCardRows(cardRows: PrecoResponse[]) {
 }
 
 export default function Biblioteca() {
+  const { t } = useTranslation();
   const { loading, error, request } = useFetch();
   const [cards, setCards] = React.useState<BibliotecaItem[] | null>(null);
   const [cardRows, setCardRows] = React.useState<PrecoResponse[] | null>(null);
@@ -103,14 +105,14 @@ export default function Biblioteca() {
 
   return (
     <section className={styles.bibContainer}>
-      <h1>Mais Jogados</h1>
+      <h1>{t('bib.title')}</h1>
       {(loading || !cardRows) && !error ? (
         <div className={styles.skeleton}> </div>
       ) : cardRows ? (
         <>
           <div className={styles.cardsHolder}>{showCardRows(cardRows)}</div>
           <button className={styles.exibirMais} onClick={handleClick}>
-            Exibir Mais
+            {t('bib.show-more')}
           </button>
         </>
       ) : (

@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const api = apiBaseUrl;
   try {
-    // const response = await api.get('invalid');
     const response = await api.get('api/featuredcategories/?l=brazilian');
     const data = response.data;
     const contentType = response.headers['content-type'];
