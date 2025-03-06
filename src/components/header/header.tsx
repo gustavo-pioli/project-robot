@@ -4,8 +4,12 @@ import styles from './header.module.css';
 import { usePathname } from 'next/navigation';
 import useMedia from '@/hooks/useMedia';
 import React from 'react';
+import '@/app/config/i18n.config';
+
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t } = useTranslation();
   const pathname = usePathname();
   const mobile = useMedia('(max-width: 26rem)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
@@ -15,7 +19,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <nav className={`container ${styles.nav}`}>
+      <nav className={`${styles.nav}`}>
         <p className={styles.logo}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,26 +105,26 @@ export default function Header() {
           }`}
         >
           <Link href={'/'} className={pathname === '/' ? 'active' : ''}>
-            HOME
+            {t('header.home').toLocaleUpperCase()}
           </Link>
           <Link href="/" className={pathname === '/loja' ? 'active' : ''}>
-            LOJA
+            {t('header.store').toLocaleUpperCase()}
           </Link>
           <Link href="/" className={pathname === '/sobre' ? 'active' : ''}>
-            SOBRE
+            {t('header.about').toLocaleUpperCase()}
           </Link>
           <Link href="/" className={pathname === '/suporte' ? 'active' : ''}>
-            SUPORTE
+            {t('header.support').toLocaleUpperCase()}
           </Link>
           {mobile && (
             <Link href={'/'} className={pathname === '/login' ? 'active' : ''}>
-              LOGIN
+              {t('header.login').toLocaleUpperCase()}
             </Link>
           )}
         </div>
         <div className={styles.login}>
           <Link href="/" className={pathname === '/login' ? 'active' : ''}>
-            Iniciar Sessão
+            {t('header.login')}
           </Link>
         </div>
       </nav>

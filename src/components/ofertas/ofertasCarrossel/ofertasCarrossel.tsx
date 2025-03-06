@@ -12,8 +12,10 @@ import LoadingError from '@/components/Error/loadingError';
 import useFetch from '@/hooks/useFetch';
 import { Game, SpecialResponse } from '@/services/types';
 import useMedia from '@/hooks/useMedia';
+import { useTranslation } from 'react-i18next';
 
 export default function OfertasCarrossel() {
+  const { t } = useTranslation();
   const { loading, error, request } = useFetch();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [appids, setAppIds] = React.useState<number[]>([]);
@@ -72,7 +74,7 @@ export default function OfertasCarrossel() {
   };
   return (
     <div className="container">
-      <h1 className={styles.title}>OFERTAS</h1>
+      <h1 className={styles.title}>{t('deals.title').toLocaleUpperCase()}</h1>
       <div className={styles.carousel}>
         {(loading || !items || !videoLoaded) && !error ? (
           <div className={styles.skeleton}></div>

@@ -50,7 +50,7 @@
   position: relative;
 }
 .logo > svg {
-  position: absolute;
+  transform: translate(-1%,-16%);
   bottom: -6px;
   left: -5rem;
 }
