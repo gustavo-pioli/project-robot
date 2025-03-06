@@ -24,3 +24,9 @@
   height: 100%;
   background: linear-gradient(to right, transparent 90%, #150239);
 }
+
+@media (max-width: 416px) {
+  .tagList{
+    margin-top: 1rem;
+  }
+}

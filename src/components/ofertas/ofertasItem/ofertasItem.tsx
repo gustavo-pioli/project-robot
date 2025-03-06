@@ -4,6 +4,7 @@ import Preco from '../preco/preco';
 import Tags from '../tags/tags';
 import React from 'react';
 import { Game } from '@/services/types';
+import useMedia from '@/hooks/useMedia';
 
 export default function OfertasItem({
   content,
@@ -18,6 +19,7 @@ export default function OfertasItem({
 }) {
   const [skeleton, setSkeleton] = React.useState(true);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const mobile = useMedia('(max-width: 26rem)');
 
   function handleLoad(img: HTMLImageElement) {
     setSkeleton(false);
@@ -65,7 +67,7 @@ export default function OfertasItem({
           />
         )}
       </div>
-      <div className={styles.descricao}>
+      <div className={`${mobile ? styles.mobileDescricao : styles.descricao}`}>
         <Image
           className={styles.banner}
           src={content.header_image}
@@ -78,7 +80,9 @@ export default function OfertasItem({
           <Tags content={content.genres} />
         </div>
         <p>{content.short_description}</p>
-        <div className={styles.precoContainer}>
+        <div
+          className={`${mobile ? styles.mobilePreco : styles.precoContainer}`}
+        >
           <Preco
             discount={content.price_overview.discount_percent}
             initial={content.price_overview.initial_formatted}

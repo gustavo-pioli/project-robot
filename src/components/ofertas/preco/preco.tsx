@@ -1,20 +1,32 @@
 import React from 'react';
 import styles from './preco.module.css';
+import useMedia from '@/hooks/useMedia';
 
 type PrecoType = {
   discount?: number;
   initial?: string;
   final?: string;
 };
-export default function Preco({ discount = 0, initial, final }: PrecoType) {
-  const isFree = !final;
+type PrecoProps = PrecoType & { mobile?: boolean | null };
 
+export default function Preco({
+  discount = 0,
+  initial,
+  final,
+  mobile,
+}: PrecoProps) {
+  const isFree = !final;
+  if (useMedia('(max-width: 26rem)')) mobile = true;
   return isFree ? (
-    <div className={styles.precoContainer}>
+    <div
+      className={`${mobile ? styles.mobileContainer : styles.precoContainer}`}
+    >
       <div className={styles.preco}>Gratuito para jogar</div>
     </div>
   ) : (
-    <div className={styles.precoContainer}>
+    <div
+      className={`${mobile ? styles.mobileContainer : styles.precoContainer}`}
+    >
       {discount ? (
         <>
           <p className={styles.desconto}>{`-${discount}%`}</p>

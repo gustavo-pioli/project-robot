@@ -11,6 +11,7 @@ import Dots from '../dots/dots';
 import LoadingError from '@/components/Error/loadingError';
 import useFetch from '@/hooks/useFetch';
 import { Game, SpecialResponse } from '@/services/types';
+import useMedia from '@/hooks/useMedia';
 
 export default function OfertasCarrossel() {
   const { loading, error, request } = useFetch();
@@ -18,6 +19,7 @@ export default function OfertasCarrossel() {
   const [appids, setAppIds] = React.useState<number[]>([]);
   const [items, setItems] = React.useState<Game[] | null>(null);
   const [videoLoaded, setVideoLoaded] = React.useState(false);
+  const mobile = useMedia('(max-width: 26rem)');
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
@@ -26,7 +28,7 @@ export default function OfertasCarrossel() {
   React.useEffect(() => {
     async function fetchIds() {
       const url = '/api/ofertas';
-      const response = await request(url);
+      const { response } = await request(url);
       const json = response?.data as SpecialResponse;
       const appids = json ? json.specials?.items.map((item) => item.id) : [];
       setAppIds(appids);
@@ -44,9 +46,9 @@ export default function OfertasCarrossel() {
       let index = 0;
       while (info.length < numOfertas && index < list.length) {
         const url = list[index];
-        const response = await request(url);
+        const { response, error: errorMessage } = await request(url);
         const json = response?.data;
-        if (json[ids[index]]?.success) {
+        if (!errorMessage && json[ids[index]]?.success) {
           info.push(json[ids[index]].data);
         }
         index++;
@@ -61,13 +63,13 @@ export default function OfertasCarrossel() {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
+    arrows: !mobile,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     dots: true,
     appendDots: (dots: React.ReactNode) => <Dots dots={dots} />,
     beforeChange: (current: number, next: number) => setActiveIndex(next),
   };
-
   return (
     <div className="container">
       <h1 className={styles.title}>OFERTAS</h1>
