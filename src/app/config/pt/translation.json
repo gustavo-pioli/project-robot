@@ -1,0 +1,19 @@
+{
+  "header": {
+    "login": "Iniciar Sessão",
+    "support": "Suporte",
+    "about": "Sobre",
+    "store": "Loja",
+    "home": "Início"
+  },
+  "deals": {
+    "title": "Ofertas"
+  },
+  "bib": {
+    "title": "Mais Jogados",
+    "show-more": "Exibir Mais"
+  },
+  "footer": {
+    "description": "@ 2025 Robot Corporation. Todos os direitos reservados"
+  }
+}
